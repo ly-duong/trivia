@@ -2,8 +2,7 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // Default routing
-  {path: '**', redirectTo: '/', pathMatch: 'full'}
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
 
 @NgModule({
