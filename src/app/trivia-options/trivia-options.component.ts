@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TriviaOptions } from '../core/models';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-trivia-options',
@@ -8,9 +9,12 @@ import { TriviaOptions } from '../core/models';
 })
 export class TriviaOptionsComponent implements OnInit {
 
+  options: TriviaOptions;
+
   constructor() { }
 
   ngOnInit() {
+    this.options = <TriviaOptions> {};
   }
 
 }
