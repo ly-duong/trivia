@@ -1,3 +1,24 @@
-<p>
-  trivia-options works!
-</p>
+  <form class="options-form">
+    <div class="options-number">
+      Number of questions: <input type="number" class="question-number" value=10><br>
+    </div>
+    <div class="options-category">
+      Category: <br> 
+      <select name="categories" class="question-category">
+        <option class="questionCategory" value="all">All</option>
+      </select><br>
+    </div>
+    <div class="options-difficulty">
+      Question Difficulty: <br>
+      <input type="radio" name="question-difficulty" id="any" value="any" checked><label for="any">Any</label><br>
+      <input type="radio" name="question-difficulty" id="easy" value="easy"><label for="easy">Easy</label><br>
+      <input type="radio" name="question-difficulty" id="medium" value="medium"><label for="medium">Medium</label><br>
+      <input type="radio" name="question-difficulty" id="hard" value="hard"><label for="hard">Hard</label><br>
+    </div>
+    <div class="options-type">
+      Question Types: <br>
+      <input type="checkbox" id="multiple" name="question-type" value="multiple" checked><label for="multiple"> Multiple Choice</label><br>
+      <input type="checkbox" id="truefalse" name="question-type" value="boolean" checked><label for="truefalse">True/False</label><br>
+    </div>
+  </form>
+  <button class="get-questions">GENERATE QUESTIONS</button>
