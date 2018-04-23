@@ -1,29 +1,30 @@
 <form class="options-form">
-  <div class="options-number">
-    Number of questions: <input name="options-number" type="number" class="question-number" [(ngModel)]="options.numQuestions" value="10"><br>
-  </div>
-  <div class="options-category">
-    Category: <br> 
-    <select name="options-categories" class="question-category" [(ngModel)]="options.category">
+    <div class="options-number">
+        Number of questions: <input name="options-number" type="number" class="question-number" [(ngModel)]="options.numQuestions" value="10"><br>
+    </div>
+    <div class="options-category">
+        Category: <br>
+        <select name="options-category" class="question-category" [(ngModel)]="options.category">
       <option class="questionCategory" value="">All</option>
+      <option class="questionCategory" value="Test">Test</option>
     </select><br>
-  </div>
-  <div class="options-difficulty">
-    Question Difficulty: <br>
-    <input type="radio" name="options-difficulty" id="any" value="" [(ngModel)]="options.difficulty" checked><label for="any">Any</label><br>
-    <input type="radio" name="options-difficulty" id="easy" value="easy" [(ngModel)]="options.difficulty"><label for="easy">Easy</label><br>
-    <input type="radio" name="options-difficulty" id="medium" value="medium" [(ngModel)]="options.difficulty"><label for="medium">Medium</label><br>
-    <input type="radio" name="options-difficulty" id="hard" value="hard" [(ngModel)]="options.difficulty"><label for="hard">Hard</label><br>
-  </div>
-  <div class="options-type">
-    Question Types: <br>
-    <select name="options-type" class="question-type" [(ngModel)]="options.questionType">
+    </div>
+    <div class="options-difficulty">
+        Question Difficulty: <br>
+        <input type="radio" name="options-difficulty" id="any" value="" [(ngModel)]="options.difficulty" checked><label for="any">Any</label><br>
+        <input type="radio" name="options-difficulty" id="easy" value="easy" [(ngModel)]="options.difficulty"><label for="easy">Easy</label><br>
+        <input type="radio" name="options-difficulty" id="medium" value="medium" [(ngModel)]="options.difficulty"><label for="medium">Medium</label><br>
+        <input type="radio" name="options-difficulty" id="hard" value="hard" [(ngModel)]="options.difficulty"><label for="hard">Hard</label><br>
+    </div>
+    <div class="options-type">
+        Question Types: <br>
+        <select name="options-type" class="question-type" [(ngModel)]="options.questionType">
       <option class="questionType" value="">All</option>
       <option class="questionType" value="multiple">Multiple Choice</option>
       <option class="questionType" value="boolean">True / False</option>
     </select><br>
-    <!-- <input type="checkbox" id="multiple" name="question-type" value="multiple" checked><label for="multiple"> Multiple Choice</label><br> -->
-    <!-- <input type="checkbox" id="truefalse" name="question-type" value="boolean" checked><label for="truefalse">True/False</label><br> -->
-  </div>
+        <!-- <input type="checkbox" id="multiple" name="question-type" value="multiple" checked><label for="multiple"> Multiple Choice</label><br> -->
+        <!-- <input type="checkbox" id="truefalse" name="question-type" value="boolean" checked><label for="truefalse">True/False</label><br> -->
+    </div>
 </form>
 <button class="get-questions">GENERATE QUESTIONS</button>
