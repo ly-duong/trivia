@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TriviaOptions } from '../core/models';
 
 @Component({
   selector: 'app-trivia-options',
