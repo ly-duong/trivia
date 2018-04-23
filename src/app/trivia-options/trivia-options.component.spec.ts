@@ -51,7 +51,7 @@ describe('TriviaOptionsComponent', () => {
     });;
   });
 
-  it('should bind difficulty with the checkboxes named "options-difficulty"', () => {
+  it('should bind difficulty with the radios named "options-difficulty"', () => {
     // When stable makes sure test is run after:
     // 1) Bindings are ready
     // 2) Any default values are loaded
