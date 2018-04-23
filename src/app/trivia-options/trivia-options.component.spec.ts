@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { TriviaOptions } from '../core/models';
 
 import { TriviaOptionsComponent } from './trivia-options.component';
 
@@ -8,7 +10,10 @@ describe('TriviaOptionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TriviaOptionsComponent ]
+      declarations: [ TriviaOptionsComponent ],
+      imports: [
+        FormsModule
+      ]
     })
     .compileComponents();
   }));
