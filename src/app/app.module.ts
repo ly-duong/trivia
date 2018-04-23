@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home';
 import { FormsModule } from '@angular/forms';
 import { TriviaOptionsComponent } from './trivia-options/trivia-options.component';
+import { CoreModule } from './core';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TriviaOptionsComponent } from './trivia-options/trivia-options.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HomeModule
+    CoreModule,
+    HomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
