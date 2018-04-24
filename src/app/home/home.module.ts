@@ -12,6 +12,6 @@ import { TriviaOptionsComponent } from '../trivia-options/trivia-options.compone
     HomeRoutingModule,
     FormsModule,
   ],
-  declarations: [HomeComponent,  TriviaOptionsComponent]
+  declarations: [HomeComponent, TriviaOptionsComponent]
 })
 export class HomeModule { }
