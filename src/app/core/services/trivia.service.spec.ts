@@ -17,7 +17,7 @@ describe('TriviaService', () => {
     expect(service).toBeTruthy();
   }));
 
-  fit('should reference correct URL to retrieve categories', async(inject([TriviaService, HttpTestingController], (service: TriviaService, backend: HttpTestingController) => {
+  it('should reference correct URL to retrieve categories', async(inject([TriviaService, HttpTestingController], (service: TriviaService, backend: HttpTestingController) => {
     console.log('testing service!');
     service.getCategories()
     .subscribe();

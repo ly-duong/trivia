@@ -4,6 +4,8 @@ import { TriviaOptions } from '../core/models';
 
 import { TriviaOptionsComponent } from './trivia-options.component';
 import { By } from '@angular/platform-browser';
+import { TriviaService } from '../core/services';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TriviaOptionsComponent', () => {
   let component: TriviaOptionsComponent;
@@ -13,7 +15,8 @@ describe('TriviaOptionsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TriviaOptionsComponent],
       imports: [
-        FormsModule
+        FormsModule,
+        HttpClientTestingModule
       ]
     })
       .compileComponents();
@@ -29,7 +32,7 @@ describe('TriviaOptionsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should bind numOfQuestions property with input with name "options-number"', () => {
+  it('should bind amount property with input with name "options-number"', () => {
     // When stable makes sure test is run after:
     // 1) Bindings are ready
     // 2) Any default values are loaded
@@ -39,16 +42,16 @@ describe('TriviaOptionsComponent', () => {
       let element = control.nativeElement;
       element.value = TEST_VALUE_1;
       element.dispatchEvent(new Event('input'));
-      expect(component.options.numQuestions).toBe(TEST_VALUE_1);
+      expect(component.options.amount).toBe(TEST_VALUE_1);
 
       // Put in a second update for good measure
-      const TEST_VALUE_2 = 50
+      const TEST_VALUE_2 = 50;
       element.value = TEST_VALUE_2;
       element.dispatchEvent(new Event('input'));
-      expect(component.options.numQuestions).toBe(TEST_VALUE_2);
+      expect(component.options.amount).toBe(TEST_VALUE_2);
     }).catch(error => {
       expect(error).toBeFalsy();
-    });;
+    });
   });
 
   it('should bind difficulty with the radios named "options-difficulty"', () => {
@@ -74,7 +77,7 @@ describe('TriviaOptionsComponent', () => {
     // 2) Any default values are loaded
     fixture.whenStable().then(() => {
       expect(component.options.category).toBeFalsy();
-  
+
       let control = fixture.debugElement.query(By.css('select[name=options-category]'));
       let element = control.nativeElement;
 
@@ -92,15 +95,15 @@ describe('TriviaOptionsComponent', () => {
     // 1) Bindings are ready
     // 2) Any default values are loaded
     fixture.whenStable().then(() => {
-      expect(component.options.questionType).toBeFalsy();
-  
+      expect(component.options.type).toBeFalsy();
+
       let control = fixture.debugElement.query(By.css('select[name=options-type]'));
       let element = control.nativeElement;
 
       const TEST_VALUE = element.querySelector('option:last-child').value; // Get last option in select
       element.value = TEST_VALUE;
       element.dispatchEvent(new Event('change'));
-      expect(component.options.questionType).toBe(TEST_VALUE);
+      expect(component.options.type).toBe(TEST_VALUE);
     }).catch(error => {
       expect(error).toBeFalsy();
     });
