@@ -13,7 +13,6 @@ import { CoreModule } from './core';
 @NgModule({
   declarations: [
     AppComponent,
-    TriviaOptionsComponent
   ],
   imports: [
     BrowserModule,
