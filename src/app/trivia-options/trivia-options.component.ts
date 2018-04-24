@@ -22,11 +22,13 @@ export class TriviaOptionsComponent implements OnInit {
   }
 
   // on click "Generate Questions":
-  getQuestions() {
+  generateQuestions() {
     // Nifty trick to eliminate undefined variables from the Options object:
     this.options = JSON.parse(JSON.stringify(this.options));
     console.log('user options at button click: ', this.options);
-    return this.options;
+    this.triviaService.getQuestions(this.options).subscribe(
+      response => console.log(response)
+    );
   }
 
 }
