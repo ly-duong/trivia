@@ -108,4 +108,38 @@ describe('TriviaOptionsComponent', () => {
       expect(error).toBeFalsy();
     });
   });
+
+  it('should invoke getQuestions() method when "generate questions" button is pressed', () => {
+    // When stable makes sure test is run after:
+    // 1) Bindings are ready
+    // 2) Any default values are loaded
+    fixture.whenStable().then(() => {
+      spyOn(component, 'getQuestions');
+
+      let buttonControl = fixture.debugElement.query(By.css('.get-questions'));
+      let buttonElement = buttonControl.nativeElement;
+
+      buttonElement.click();
+      expect(component.getQuestions).toHaveBeenCalledTimes(1);
+
+      // Test a second button press for repeat call:
+      buttonElement.click();
+      expect(component.getQuestions).toHaveBeenCalledTimes(2);
+
+    }).catch(error => {
+      expect(error).toBeFalsy();
+    });
+  });
+
+  /*it('should return user options when getQuestions() method is called', () => {
+    // When stable makes sure test is run after:
+    // 1) Bindings are ready
+    // 2) Any default values are loaded
+    fixture.whenStable().then(() => {
+
+    }).catch(error => {
+      expect(error).toBeFalsy();
+    });
+  });*/
+
 });
