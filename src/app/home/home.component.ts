@@ -7,12 +7,10 @@ import { TriviaService } from '../core/services';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   constructor(private triviaService: TriviaService) {
   }
 
   ngOnInit() {
-    this.triviaService.getCategories().subscribe(response => console.log(response));
   }
 
 }

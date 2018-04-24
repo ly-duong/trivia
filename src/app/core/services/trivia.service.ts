@@ -11,7 +11,6 @@ import { TriviaCategory } from '../models';
 
 @Injectable()
 export class TriviaService {
-
   constructor(private http: HttpClient) { }
 
   public getCategories(): Observable<TriviaCategory> {
