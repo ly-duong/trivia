@@ -26,7 +26,20 @@ export class TriviaService {
     });
   }
 
-  public getQuestions() {
-
+  public getQuestions(options): Observable<Object> {
+    const URL = 'https://opentdb.com/api.php';
+    let params = new HttpParams();
+    options = Object.assign({amount: 10},  options);
+    for(let i in options){
+      if (options[i] != null && options[i] !== undefined) {
+        params = params.append(i, options[i]);
+      }
+    }
+    console.log(params);
+    return this.http.get(URL, {params: params})
+    .map((response: any) => {
+      console.log(this.http.get(URL, {params: params}));
+      return response;
+    });
   }
 }
