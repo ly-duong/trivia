@@ -27,4 +27,23 @@ describe('TriviaService', () => {
     });
   })));
 
+  it('should reference correct URL to retrieve questions', async(inject([TriviaService, HttpTestingController], (service: TriviaService, backend: HttpTestingController) => {
+    console.log('testing questions service!');
+    let mock_options = {};
+    service.getQuestions(mock_options)
+    .subscribe();
+    backend.expectOne((request: HttpRequest<any>) => {
+      console.log(request);
+      return request.urlWithParams === 'https://opentdb.com/api.php?amount=10';
+    });
+
+    mock_options = {amount: 10, category: '20', difficulty: 'medium', type: 'boolean'};
+    service.getQuestions(mock_options)
+    .subscribe();
+    backend.expectOne((request: HttpRequest<any>) => {
+      console.log(request);
+      return request.urlWithParams === 'https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=boolean';
+    });
+  })));
+
 });
