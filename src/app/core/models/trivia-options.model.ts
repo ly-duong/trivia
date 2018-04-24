@@ -1,6 +1,6 @@
 export interface TriviaOptions {
        category?: string;
-       numQuestions?: number;
+       amount?: number;
        difficulty?: string;
-       questionType?: string;
+       type?: string;
 }
