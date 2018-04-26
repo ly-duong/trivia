@@ -8,7 +8,6 @@ import { HomeModule } from './home';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core';
 
-
 @NgModule({
   declarations: [
     AppComponent
