@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 
-import { TriviaCategory } from '../models';
+import { TriviaCategory, TriviaQuestions } from '../models';
 
 
 @Injectable()
@@ -30,7 +30,7 @@ export class TriviaService {
     const URL = 'https://opentdb.com/api.php';
     let params = new HttpParams();
     options = Object.assign({amount: 10},  options);
-    for(let i in options) {
+    for (let i in options) {
       if (options[i] != null && options[i] !== undefined) {
         params = params.append(i, options[i]);
       }
@@ -39,7 +39,16 @@ export class TriviaService {
     return this.http.get(URL, {params})
     .map((response: any) => {
       console.log(this.http.get(URL, {params: params}));
-      return response;
+      return response.results.map((result) => {
+        return <TriviaQuestions>{
+          question: result.question,
+          correctAnswer: result.correct_answer,
+          incorrectAnswers: result.incorrect_answers,
+          category: result.category,
+          difficulty: result.difficulty,
+          type: result.type
+        };
+      });
     });
   }
 }

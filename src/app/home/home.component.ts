@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TriviaService } from '../core/services';
+import { TriviaQuestions } from '../core/models';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +11,14 @@ export class HomeComponent implements OnInit {
   constructor(private triviaService: TriviaService) {
   }
 
+  triviaQuestions: TriviaQuestions[];
+
   ngOnInit() {
   }
 
     // on click "Generate Questions":
     getQuestions(options) {
       console.log('user options at button click: ', options);
-      this.triviaService.getQuestions(options).subscribe(
-        response => console.log(response)
-      );
+      this.triviaService.getQuestions(options).subscribe(response => this.triviaQuestions = <TriviaQuestions[]>response);
     }
 }
