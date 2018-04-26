@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
     // on click "Generate Questions":
     getQuestions(options) {
       console.log('user options at button click: ', options);
-      this.triviaService.getQuestions(options).subscribe(response => this.triviaQuestions = <TriviaQuestions[]>response);
+      this.triviaService.getQuestions(options).subscribe(response => {
+        this.triviaQuestions = <TriviaQuestions[]>response;
+        //console.log(response);
+      });
     }
 }
