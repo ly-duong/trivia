@@ -13,4 +13,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+    // on click "Generate Questions":
+    getQuestions(options) {
+      console.log('user options at button click: ', options);
+      this.triviaService.getQuestions(options).subscribe(
+        response => console.log(response)
+      );
+    }
 }

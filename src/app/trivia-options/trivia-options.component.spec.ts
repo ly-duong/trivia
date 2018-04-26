@@ -38,8 +38,8 @@ describe('TriviaOptionsComponent', () => {
     // 2) Any default values are loaded
     fixture.whenStable().then(() => {
       const TEST_VALUE_1 = 30;
-      let control = fixture.debugElement.query(By.css('.question-number'));
-      let element = control.nativeElement;
+      const control = fixture.debugElement.query(By.css('.question-number'));
+      const element = control.nativeElement;
       element.value = TEST_VALUE_1;
       element.dispatchEvent(new Event('input'));
       expect(component.options.amount).toBe(TEST_VALUE_1);
@@ -62,8 +62,8 @@ describe('TriviaOptionsComponent', () => {
       // Before we start, value should be nothing
       expect(component.options.difficulty).toBeFalsy();
       const TEST_VALUE = 'easy';
-      let control = fixture.debugElement.query(By.css(`.options-difficulty input[value=${TEST_VALUE}]`));
-      let element = control.nativeElement;
+      const control = fixture.debugElement.query(By.css(`.options-difficulty input[value=${TEST_VALUE}]`));
+      const element = control.nativeElement;
       element.dispatchEvent(new Event('change'));
       expect(component.options.difficulty).toBe(TEST_VALUE);
     }).catch(error => {
@@ -78,8 +78,8 @@ describe('TriviaOptionsComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.options.category).toBeFalsy();
 
-      let control = fixture.debugElement.query(By.css('select[name=options-category]'));
-      let element = control.nativeElement;
+      const control = fixture.debugElement.query(By.css('select[name=options-category]'));
+      const element = control.nativeElement;
 
       const TEST_VALUE = element.querySelector('option:last-child').value; // Get last option in select
       element.value = TEST_VALUE;
@@ -97,8 +97,8 @@ describe('TriviaOptionsComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.options.type).toBeFalsy();
 
-      let control = fixture.debugElement.query(By.css('select[name=options-type]'));
-      let element = control.nativeElement;
+      const control = fixture.debugElement.query(By.css('select[name=options-type]'));
+      const element = control.nativeElement;
 
       const TEST_VALUE = element.querySelector('option:last-child').value; // Get last option in select
       element.value = TEST_VALUE;
@@ -107,5 +107,41 @@ describe('TriviaOptionsComponent', () => {
     }).catch(error => {
       expect(error).toBeFalsy();
     });
+  });
+
+  it('should invoke getOptions() method when "generate questions" button is pressed', ()  =>  {
+    // When stable makes sure test is run after:
+    // 1) Bindings are ready
+    // 2) Any default values are loaded
+    fixture.whenStable().then(()  =>  {
+      spyOn(component,  'getOptions');
+
+      const  buttonControl  =  fixture.debugElement.query(By.css('.get-questions'));
+      const  buttonElement  =  buttonControl.nativeElement;
+
+      buttonElement.click();
+      expect(component.getOptions).toHaveBeenCalledTimes(1);
+
+      // Test a second button press for repeat call:
+      buttonElement.click();
+      expect(component.getOptions).toHaveBeenCalledTimes(2);
+
+    }).catch(error  =>  {
+      expect(error).toBeFalsy();
+    });
+  });
+
+  it('should emit the trivia options when getOptions is called', () => {
+    // Spy on our event emitter
+    spyOn(component.optionsModel, 'emit');
+
+    // Load in some options to test
+    component.options.amount = 100;
+    component.options.category = 'Test category';
+
+    // Call function that emits event
+    component.getOptions();
+
+    expect(component.optionsModel.emit).toHaveBeenCalledWith(component.options);
   });
 });
